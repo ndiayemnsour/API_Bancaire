@@ -1,7 +1,9 @@
 package sn.bmbank.api_bancaire.model;
 
-import java.time.LocalDateTime;
+import java.time.*;
 import java.util.UUID;
+
+
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -22,7 +24,7 @@ public class Client {
 
     @Getter
     @Setter
-    private String date_naissance;
+    private LocalDate date_naissance;
 
     @Getter
     @Setter
