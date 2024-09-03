@@ -14,6 +14,7 @@ import java.util.UUID;
 public class Statut {
     @Id
     private String id_statut;
+    
     @Getter
     @Setter
     private String nom_statut;
