@@ -34,6 +34,12 @@ public class Client {
     @Setter
     private LocalDateTime date_creation;
 
+    // Initialiser la date de création avant de persister l'entité
+    
+    protected void onCreate() {
+        this.date_creation = LocalDateTime.now();
+    }
+    
     public Client(){
 
     }
@@ -42,12 +48,6 @@ public class Client {
     @PrePersist
     public void generateShortUUID() {
         this.id_client= UUID.randomUUID().toString().substring(0, 6);
-    }
-
-    // Initialiser la date de création avant de persister l'entité
-    
-    protected void onCreate() {
-        this.date_creation = LocalDateTime.now();
     }
 
     // Relation Many-to-One avec l'entité Statut
