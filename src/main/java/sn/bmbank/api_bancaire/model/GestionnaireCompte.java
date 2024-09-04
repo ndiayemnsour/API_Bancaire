@@ -40,19 +40,6 @@ public class GestionnaireCompte {
     @PrePersist
     public void generateShortUUID(){
         this.id_gestionnaire = UUID.randomUUID().toString().substring(0,6);
-    }
-
-    // Initialiser la date de création avant de persister l'entité
-    
-    protected void onCreate() {
         this.date_creation_gestionnaire = LocalDateTime.now();
     }
-
-    //relation many to one avec statut 
-    @ManyToOne
-    @JoinColumn(name = "statut", referencedColumnName="id_statut")
-
-    @Getter
-    @Setter
-    private Statut statut;
 }
