@@ -32,10 +32,10 @@ public class StatutController {
         return statutService.getStatutById(id_statut);
     }
     
-    //Emdpoint pour  ajouter un Statut
+    //Endpoint pour  ajouter un Statut
     @PostMapping("POST/statut")
-        public Statut addStatut(@RequestBody Statut statut) {
-            return statutService.addStatut(statut);
-        }
+    public Statut addStatut(@RequestBody Statut statut) {
+        return statutService.addStatut(statut);
+    }
 
 }

@@ -3,8 +3,7 @@ package sn.bmbank.api_bancaire.model;
 import java.util.UUID;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table(name = "type")

@@ -31,7 +31,7 @@ public class ClientController {
         return clientService.getClientById(id_client);
     }
 
-    ////Emdpoint pour  ajouter un Client
+    //Endpoint pour  ajouter un Client
     @PostMapping("add")
         public Client addClient (@RequestBody Client client){
 
