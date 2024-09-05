@@ -9,6 +9,8 @@ import lombok.*;
 @Table(name = "type")
 public class Type {
     @Id
+    @Getter
+    @Setter
     private String id_type;
 
     @Getter

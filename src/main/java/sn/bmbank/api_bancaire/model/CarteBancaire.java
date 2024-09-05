@@ -9,6 +9,8 @@ import java.util.*;
 @Table(name = "carte_bancaire")
 public class CarteBancaire {
     @Id
+    @Getter
+    @Setter
     private String id_carte;
 
     @PrePersist

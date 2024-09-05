@@ -10,6 +10,8 @@ import java.util.*;
 @Table(name = "adresse")
 public class Adresse {
     @Id
+    @Getter
+    @Setter
     private String id_adresse;
 
     @PrePersist

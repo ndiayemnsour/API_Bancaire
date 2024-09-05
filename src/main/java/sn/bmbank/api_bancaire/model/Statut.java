@@ -13,6 +13,8 @@ import java.util.UUID;
 @Table(name = "statut")
 public class Statut {
     @Id
+    @Getter
+    @Setter
     private String id_statut;
     
     @Getter

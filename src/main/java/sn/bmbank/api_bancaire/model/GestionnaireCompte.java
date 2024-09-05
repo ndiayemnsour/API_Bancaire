@@ -10,6 +10,8 @@ import lombok.*;
 @Table(name = "gestionnaire_compte")
 public class GestionnaireCompte {
     @Id
+    @Getter
+    @Setter
     private String id_gestionnaire;
 
     @Getter

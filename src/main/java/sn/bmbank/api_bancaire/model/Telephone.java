@@ -9,6 +9,8 @@ import java.util.UUID;
 @Table(name = "telephone")
 public class Telephone {
     @Id
+    @Getter
+    @Setter
     private String id_telephone;
 
     @PrePersist

@@ -12,6 +12,8 @@ import lombok.*;
 @Table(name = "client")
 public class Client {
     @Id
+    @Getter
+    @Setter
     private String id_client;
 
     @Getter

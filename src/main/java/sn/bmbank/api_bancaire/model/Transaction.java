@@ -12,6 +12,8 @@ import java.util.*;
 @Table(name = "transaction")
 public class Transaction {
     @Id
+    @Getter
+    @Setter
     private String id_transaction;
 
     @PrePersist

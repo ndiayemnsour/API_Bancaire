@@ -1,8 +1,7 @@
 package sn.bmbank.api_bancaire.model;
 
-import java.time.LocalDateTime;
-import java.util.UUID;
-
+import java.time.*;
+import java.util.*;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -10,12 +9,9 @@ import lombok.*;
 @Table(name = "compte")
 public class Compte {
     @Id
+    @Getter
+    @Setter
     private String id_compte;
-
-    @PrePersist
-    public void generateShortUUID(){
-        this.id_compte=UUID.randomUUID().toString().substring(0,6);
-    }
 
     @Getter
     @Setter
@@ -27,23 +23,23 @@ public class Compte {
 
     @Getter
     @Setter
-    private LocalDateTime date_ouverture;
-
-    private void onCreate(){
-        this.date_ouverture=LocalDateTime.now();
-    }
+    private LocalDate date_ouverture;
 
     @Getter
     @Setter
-    private LocalDateTime date_fermature;
+    private LocalDate date_fermature;
 
-    private void CreateFerme(){
-        this.date_fermature=LocalDateTime.now();
-    }
 
     @Getter
     @Setter
     private String devise;
+
+
+    @PrePersist
+    public void generateShortUUID(){
+        this.id_compte=UUID.randomUUID().toString().substring(0,6);
+        this.date_ouverture=LocalDate.now();
+    }
 
     //Clés etrangeres
     @ManyToOne
