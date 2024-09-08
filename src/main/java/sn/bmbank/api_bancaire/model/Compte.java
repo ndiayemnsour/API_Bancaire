@@ -70,6 +70,27 @@ public class Compte {
     @Setter
     private GestionnaireCompte gestionnaire_compte;
     
+    //recuperer les table etrangere
+    @Transient
+    public String getNomStatut() {
+        return statut != null ? statut.getNom_statut() : null;
+    }
+
+    @Transient
+    public String getNomType() {
+        return type != null ? type.getNom_type() : null;
+    }
+
+    @Transient
+    public String getNomClient() {
+        return client != null ? client.getNom() + " " + client.getPrenom() : null;
+    }
+
+    @Transient
+    public String getNomGestionnaire() {
+        return gestionnaire_compte != null ? gestionnaire_compte.getNom_gestionnaire() + " " + gestionnaire_compte.getPrenom_gestionnaire() : null;
+    }
+
    public Compte(){
     
    }

@@ -4,8 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import java.util.UUID;
 
 
@@ -17,7 +16,6 @@ public class Statut {
     @Setter
     private String id_statut;
     
-    @Getter
     @Setter
     private String nom_statut;
 
@@ -26,7 +24,9 @@ public class Statut {
     public Statut(){
 
     }
-    
+    public String getNom_statut() {
+        return nom_statut;
+    }
     // Générer un ID de 6 caractères basé sur UUID avant de persister l'entité
     @PrePersist
     public void generateShortUUID() {

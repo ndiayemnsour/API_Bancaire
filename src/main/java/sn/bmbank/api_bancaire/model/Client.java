@@ -46,7 +46,4 @@ public class Client {
         this.id_client= UUID.randomUUID().toString().substring(0, 6);
         this.date_creation = LocalDateTime.now();
     }
-
-    
-
 }
