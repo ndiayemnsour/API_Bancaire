@@ -10,7 +10,7 @@ import sn.bmbank.api_bancaire.model.*;
 import sn.bmbank.api_bancaire.service.CompteService;
 
 @RestController
-@RequestMapping("/accounts/")
+@RequestMapping("/GET/accounts/")
 public class CompteController {
      @Autowired
     // Injection de dépendance du service CompteService
@@ -46,9 +46,15 @@ public class CompteController {
     }
 
     //Endpoint pour recuperer un solde d'un compte
-    @GetMapping("GET /accounts/{id_compte}/balance")
-    public Float getSolde(@PathVariable String id_compte) {
-        return compteService.getSoldeByNumeroCompte(id_compte);
+    // @GetMapping("{id_compte}/balance")
+    // public Float getSolde(@PathVariable String id_compte) {
+    //     return compteService.getSoldeByIdCompte(id_compte);
+    // }
+
+    //Endpoint pour recuperer un solde d'un compte
+    @GetMapping("{numero_compte}/balance")
+    public Float getSolde(@PathVariable Integer numero_compte) {
+        return compteService.getSoldeByNumeroCompte(numero_compte);
     }
 
 }
