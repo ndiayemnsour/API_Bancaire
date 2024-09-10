@@ -39,10 +39,12 @@ public class Transaction {
     
     //FK
     @ManyToOne
+    @Getter
     @JoinColumn(name = "statut", referencedColumnName = "id_statut")
     private Statut statut;
 
     @ManyToOne
+    @Getter
     @JoinColumn(name="type", referencedColumnName = "id_type")
     private Type type;
 
