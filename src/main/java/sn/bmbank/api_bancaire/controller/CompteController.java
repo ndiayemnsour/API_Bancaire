@@ -1,12 +1,11 @@
 package sn.bmbank.api_bancaire.controller;
 
-import java.util.*;
-import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
-import org.springframework.data.web.PagedResourcesAssembler;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import sn.bmbank.api_bancaire.model.*;
+import sn.bmbank.api_bancaire.repository.CompteRepository;
 import sn.bmbank.api_bancaire.service.CompteService;
 
 @RestController
@@ -15,9 +14,9 @@ public class CompteController {
      @Autowired
     // Injection de dépendance du service CompteService
     private CompteService compteService; 
+    private CompteRepository compteRepository;
 
-    private PagedResourcesAssembler<Compte> pagedResourcesAssembler;
-
+    //private CompteRepository compteRepository;
     //Endpoint pour recuperer tous les Compte
     /*@GetMapping("all")
     public List<Compte> getAllCompte() {

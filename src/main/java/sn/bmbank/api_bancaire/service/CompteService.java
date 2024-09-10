@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 import sn.bmbank.api_bancaire.model.*;
 import sn.bmbank.api_bancaire.repository.CompteRepository;
-import java.util.stream.*;
 
 @Service
 public class CompteService {
@@ -20,13 +19,13 @@ public class CompteService {
         return compteRepository.findAll();
     }*/
 
-    //Methode pour recuperer un satut  par son ID
+    //Methode pour recuperer un Compte  par son ID
     public Compte getCompteById(String id_compte){
         Optional<Compte> optionalCompte = compteRepository.findById(id_compte);
         return optionalCompte.orElse(null);
     }
 
-    //Methode pour ajouter un Statut
+    //Methode pour ajouter un Compte
     public Compte addCompte(Compte compte){
         return compteRepository.save(compte);
 

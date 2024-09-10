@@ -47,10 +47,12 @@ public class Transaction {
     private Type type;
 
     @ManyToOne
+    @Getter
     @JoinColumn(name = "compte_debiteur", referencedColumnName = "id_compte")
     private Compte compte_debite;
 
     @ManyToOne
+    @Getter
     @JoinColumn(name = "compte_credite", referencedColumnName = "id_compte")
     private Compte compte_credite;
 
