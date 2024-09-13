@@ -11,11 +11,11 @@ public class Type {
     @Id
     @Getter
     @Setter
-    private String id_type;
+    private String idType;
 
     @Getter
     @Setter
-    private String nom_type;
+    private String nomType;
 
     public Type(){
 
@@ -24,6 +24,6 @@ public class Type {
     // Générer un ID de 6 caractères basé sur UUID avant de persister l'entité
     @PrePersist
     public void generateShortUUID() {
-        this.id_type= UUID.randomUUID().toString().substring(0, 6);
+        this.idType= UUID.randomUUID().toString().substring(0, 6);
     }
 }

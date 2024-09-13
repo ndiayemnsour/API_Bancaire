@@ -11,11 +11,11 @@ public class Compte {
     @Id
     @Getter
     @Setter
-    private String id_compte;
+    private String idCompte;
 
     @Getter
     @Setter
-    private Integer numero_compte;
+    private Integer numeroCompte;
 
     @Getter
     @Setter
@@ -23,11 +23,11 @@ public class Compte {
 
     @Getter
     @Setter
-    private LocalDate date_ouverture;
+    private LocalDate dateOuverture;
 
     @Getter
     @Setter
-    private LocalDate date_fermature;
+    private LocalDate dateFermature;
 
 
     @Getter
@@ -37,59 +37,34 @@ public class Compte {
 
     @PrePersist
     public void generateShortUUID(){
-        this.id_compte=UUID.randomUUID().toString().substring(0,6);
-        this.date_ouverture=LocalDate.now();
+        this.idCompte=UUID.randomUUID().toString().substring(0,6);
+        this.dateOuverture=LocalDate.now();
     }
 
     //Clés etrangeres
     @ManyToOne
-    @JoinColumn(name = "statut", referencedColumnName = "id_statut")
-
     @Getter
     @Setter
+    @JoinColumn(name = "statut", referencedColumnName = "idStatut")
     private Statut statut;
 
     @ManyToOne
-    @JoinColumn(name = "type", referencedColumnName = "id_type")
-
     @Getter
     @Setter
+    @JoinColumn(name = "type", referencedColumnName = "idType")
     private Type type;
 
     @ManyToOne
-    @JoinColumn(name = "client", referencedColumnName = "id_client")
-
     @Getter
     @Setter
+    @JoinColumn(name = "client", referencedColumnName = "idClient")
     private Client client;
 
     @ManyToOne
-    @JoinColumn(name = "gestionnaire_compte", referencedColumnName = "id_gestionnaire")
-
     @Getter
     @Setter
-    private GestionnaireCompte gestionnaire_compte;
-    
-    //recuperer les table etrangere
-    @Transient
-    public String getNomStatut() {
-        return statut != null ? statut.getNom_statut() : null;
-    }
-
-    @Transient
-    public String getNomType() {
-        return type != null ? type.getNom_type() : null;
-    }
-
-    @Transient
-    public String getNomClient() {
-        return client != null ? client.getNom() + " " + client.getPrenom() : null;
-    }
-
-    @Transient
-    public String getNomGestionnaire() {
-        return gestionnaire_compte != null ? gestionnaire_compte.getNom_gestionnaire() + " " + gestionnaire_compte.getPrenom_gestionnaire() : null;
-    }
+    @JoinColumn(name = "gestionnaireCompte", referencedColumnName = "idGestionnaire")
+    private GestionnaireCompte gestionnaire;
 
    public Compte(){
     

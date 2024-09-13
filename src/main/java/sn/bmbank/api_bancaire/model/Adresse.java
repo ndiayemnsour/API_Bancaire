@@ -12,11 +12,11 @@ public class Adresse {
     @Id
     @Getter
     @Setter
-    private String id_adresse;
+    private String idAdresse;
 
     @PrePersist
     public void generateShortUUID() {
-        this.id_adresse= UUID.randomUUID().toString().substring(0, 6);
+        this.idAdresse= UUID.randomUUID().toString().substring(0, 6);
     }
 
     @Getter
@@ -37,11 +37,11 @@ public class Adresse {
 
     @Getter
     @Setter
-    private Integer code_postal;
+    private Integer codePostal;
 
     //FK
     @OneToOne
-    @JoinColumn(name = "client", referencedColumnName = "id_client")
+    @JoinColumn(name = "client", referencedColumnName = "idClient")
     private Client client;
 
     public Adresse(){

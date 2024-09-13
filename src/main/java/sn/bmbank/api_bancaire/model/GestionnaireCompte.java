@@ -12,27 +12,27 @@ public class GestionnaireCompte {
     @Id
     @Getter
     @Setter
-    private String id_gestionnaire;
+    private String idGestionnaire;
 
     @Getter
     @Setter
-    private String prenom_gestionnaire;
+    private String prenomGestionnaire;
 
     @Getter
     @Setter
-    private String nom_gestionnaire;
+    private String nomGestionnaire;
 
     @Getter
     @Setter
-    private String email_gestionnaire;
+    private String emailGestionnaire;
 
     @Getter
     @Setter
-    private String date_naissance_gestionnaire;
+    private String dateNaissanceGestionnaire;
 
     @Getter
     @Setter
-    private LocalDateTime date_creation_gestionnaire;
+    private LocalDateTime dateCreationGestionnaire;
 
     public GestionnaireCompte(){
 
@@ -41,7 +41,7 @@ public class GestionnaireCompte {
     //Generer un ID de 6 caractere base sur UUID 
     @PrePersist
     public void generateShortUUID(){
-        this.id_gestionnaire = UUID.randomUUID().toString().substring(0,6);
-        this.date_creation_gestionnaire = LocalDateTime.now();
+        this.idGestionnaire = UUID.randomUUID().toString().substring(0,6);
+        this.dateCreationGestionnaire = LocalDateTime.now();
     }
 }

@@ -14,14 +14,14 @@ import sn.bmbank.api_bancaire.model.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/statut/all")
+@RequestMapping("/statut/")
 public class StatutController {
     @Autowired
     // Injection de dépendance du service StatutService
     private StatutService statutService; 
 
     //Endpoint pour recuperer tous les Statut
-    @GetMapping
+    @GetMapping("all")
     public List<Statut> getAllStatut() {
         return statutService.getAllStatut();
     }
@@ -33,7 +33,7 @@ public class StatutController {
     }
     
     //Endpoint pour  ajouter un Statut
-    @PostMapping("POST/statut")
+    @PostMapping("add")
         public Statut addStatut(@RequestBody Statut statut) {
             return statutService.addStatut(statut);
         }

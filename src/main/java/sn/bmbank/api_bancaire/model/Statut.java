@@ -14,22 +14,20 @@ public class Statut {
     @Id
     @Getter
     @Setter
-    private String id_statut;
+    private String idStatut;
     
     @Setter
-    private String nom_statut;
+    @Getter
+    private String nomStatut;
 
 
 
     public Statut(){
 
     }
-    public String getNom_statut() {
-        return nom_statut;
-    }
     // Générer un ID de 6 caractères basé sur UUID avant de persister l'entité
     @PrePersist
     public void generateShortUUID() {
-        this.id_statut= UUID.randomUUID().toString().substring(0, 6);
+        this.idStatut= UUID.randomUUID().toString().substring(0, 6);
     }
 }

@@ -2,7 +2,7 @@ package sn.bmbank.api_bancaire.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import java.util.*;
 import sn.bmbank.api_bancaire.model.Compte;
 import sn.bmbank.api_bancaire.model.Statut;
 import sn.bmbank.api_bancaire.model.Transaction;
@@ -35,15 +35,15 @@ public class TransactionService {
      */
     public Transaction executeTransaction(Transaction transaction) throws Exception {
         // Récupérer le compte débiteur et créditeur
-        Compte compteDebiteur = compteRepository.findById(transaction.getCompte_debite().getId_compte())
+        Compte compteDebiteur = compteRepository.findById(transaction.getCompteDebite().getIdCompte())
                 .orElseThrow(() -> new Exception("Compte débiteur non trouvé"));
-        Compte compteCrediteur = compteRepository.findById(transaction.getCompte_credite().getId_compte())
+        Compte compteCrediteur = compteRepository.findById(transaction.getCompteCredite().getIdCompte())
                 .orElseThrow(() -> new Exception("Compte créditeur non trouvé"));
 
         // Récupérer le type et statut de la transaction 
-        Type type = typeRepository.findById(transaction.getType().getId_type())    
+        Type type = typeRepository.findById(transaction.getType().getIdType())    
         .orElseThrow(() -> new Exception("Type pour la transaction non trouvé"));
-        Statut statut = statutRepository.findById(transaction.getStatut().getId_statut())    
+        Statut statut = statutRepository.findById(transaction.getStatut().getIdStatut())    
         .orElseThrow(() -> new Exception("Statut pour la transaction non trouvé"));
 
         // Vérifier que le compte débiteur a suffisamment de solde
@@ -70,5 +70,13 @@ public class TransactionService {
         transaction.onCreate(); // Définit la date de transaction à la date actuelle
         return transactionRepository.save(transaction);
     }
+
+    // Méthode pour récupérer toutes les transactions
+    public List<Transaction> getAllTransactions() {
+        return transactionRepository.findAll();
+    }
+
+    
+   
 
 }

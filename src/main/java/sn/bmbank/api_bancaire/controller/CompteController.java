@@ -2,19 +2,20 @@ package sn.bmbank.api_bancaire.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+
 import sn.bmbank.api_bancaire.model.*;
-import sn.bmbank.api_bancaire.repository.CompteRepository;
 import sn.bmbank.api_bancaire.service.CompteService;
 
 @RestController
-@RequestMapping("/GET/accounts/")
+@RequestMapping("/accounts/")
 public class CompteController {
-     @Autowired
     // Injection de dépendance du service CompteService
+     @Autowired
     private CompteService compteService; 
-    private CompteRepository compteRepository;
 
     //private CompteRepository compteRepository;
     //Endpoint pour recuperer tous les Compte
@@ -31,8 +32,15 @@ public class CompteController {
     
     //Endpoint pour  ajouter un Compte
    @PostMapping("add")
-    public Compte addCompte(@RequestBody Compte compte) {
-        return compteService.addCompte(compte);
+    public  ResponseEntity<Compte> addCompte(@RequestBody Compte compte) {
+        try {
+            Compte newCompte = compteService.addCompte(compte);
+            System.err.println(newCompte);
+            return ResponseEntity.status(HttpStatus.CREATED).body(newCompte);
+        } catch (Exception e) {
+            
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage(), e);
+        }
     }
 
     //methode pour retourner Compte
@@ -51,9 +59,9 @@ public class CompteController {
     // }
 
     //Endpoint pour recuperer un solde d'un compte
-    @GetMapping("{numero_compte}/balance")
-    public Float getSolde(@PathVariable Integer numero_compte) {
-        return compteService.getSoldeByNumeroCompte(numero_compte);
-    }
+    // @GetMapping("{numero_compte}/balance")
+    // public Float getSolde(@PathVariable Integer numero_compte) {
+    //     return compteService.getSoldeByNumeroCompte(numero_compte);
+    // }
 
 }

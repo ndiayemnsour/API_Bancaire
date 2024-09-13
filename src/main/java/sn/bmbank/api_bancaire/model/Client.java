@@ -14,7 +14,7 @@ public class Client {
     @Id
     @Getter
     @Setter
-    private String id_client;
+    private String idClient;
 
     @Getter
     @Setter
@@ -26,7 +26,7 @@ public class Client {
 
     @Getter
     @Setter
-    private LocalDate date_naissance;
+    private LocalDate dateNaissance;
 
     @Getter
     @Setter
@@ -34,7 +34,7 @@ public class Client {
 
     @Getter
     @Setter
-    private LocalDateTime date_creation;
+    private LocalDateTime dateCreation;
     
     public Client(){
 
@@ -43,7 +43,7 @@ public class Client {
     // Générer un ID de 6 caractères basé sur UUID avant de persister l'entité
     @PrePersist
     public void generateShortUUID() {
-        this.id_client= UUID.randomUUID().toString().substring(0, 6);
-        this.date_creation = LocalDateTime.now();
+        this.idClient= UUID.randomUUID().toString().substring(0, 6);
+        this.dateCreation = LocalDateTime.now();
     }
 }

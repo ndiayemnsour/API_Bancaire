@@ -11,16 +11,16 @@ public class CarteBancaire {
     @Id
     @Getter
     @Setter
-    private String id_carte;
+    private String idCarte;
 
     @PrePersist
     public void generateShortUUID() {
-        this.id_carte= UUID.randomUUID().toString().substring(0, 6);
+        this.idCarte= UUID.randomUUID().toString().substring(0, 6);
     }
 
     @Getter
     @Setter
-    private Integer numero_carte;
+    private Integer numeroCarte;
 
     @Getter
     @Setter
@@ -28,19 +28,19 @@ public class CarteBancaire {
 
     @Getter
     @Setter
-    private LocalDate date_expiration;
+    private LocalDate dateExpiration;
 
     //FK
     @ManyToOne
-    @JoinColumn(name = "statut", referencedColumnName = "id_statut")
+    @JoinColumn(name = "statut", referencedColumnName = "idStatut")
     private Statut statut;
 
     @ManyToOne
-    @JoinColumn(name = "type", referencedColumnName = "id_type")
+    @JoinColumn(name = "type", referencedColumnName = "idType")
     private Type type;
 
     @ManyToOne
-    @JoinColumn(name = "compte", referencedColumnName = "id_compte")
+    @JoinColumn(name = "compte", referencedColumnName = "idCompte")
     private Compte compte;
 
     public CarteBancaire(){

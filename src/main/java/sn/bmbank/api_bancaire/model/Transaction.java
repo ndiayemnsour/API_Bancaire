@@ -14,11 +14,11 @@ public class Transaction {
     @Id
     @Getter
     @Setter
-    private String id_transaction;
+    private String idTransaction;
 
     @PrePersist
     public void generateShortUUID(){
-        this.id_transaction=UUID.randomUUID().toString().substring(0,6);
+        this.idTransaction=UUID.randomUUID().toString().substring(0,6);
     }
     
     @Getter
@@ -31,32 +31,32 @@ public class Transaction {
 
     @Getter
     @Setter
-    private LocalDateTime date_transaction;
+    private LocalDateTime dateTransaction;
 
     public void onCreate(){
-        this.date_transaction=LocalDateTime.now();
+        this.dateTransaction=LocalDateTime.now();
     }
     
     //FK
     @ManyToOne
     @Getter
-    @JoinColumn(name = "statut", referencedColumnName = "id_statut")
+    @JoinColumn(name = "statut", referencedColumnName = "idStatut")
     private Statut statut;
 
     @ManyToOne
     @Getter
-    @JoinColumn(name="type", referencedColumnName = "id_type")
+    @JoinColumn(name="type", referencedColumnName = "idType")
     private Type type;
 
     @ManyToOne
     @Getter
-    @JoinColumn(name = "compte_debiteur", referencedColumnName = "id_compte")
-    private Compte compte_debite;
+    @JoinColumn(name = "compteDebiteur", referencedColumnName = "idCompte")
+    private Compte compteDebite;
 
     @ManyToOne
     @Getter
-    @JoinColumn(name = "compte_credite", referencedColumnName = "id_compte")
-    private Compte compte_credite;
+    @JoinColumn(name = "compteCredite", referencedColumnName = "idCompte")
+    private Compte compteCredite;
 
     public Transaction(){
         

@@ -11,28 +11,28 @@ public class Telephone {
     @Id
     @Getter
     @Setter
-    private String id_telephone;
+    private String idTelephone;
 
     @PrePersist
     public void generateShortUUID(){
-        this.id_telephone=UUID.randomUUID().toString().substring(0,6);
+        this.idTelephone=UUID.randomUUID().toString().substring(0,6);
     }
 
     @Getter
     @Setter
-    private Integer telephone_primary;
+    private Integer telephonePrimary;
 
     @Getter
     @Setter
-    private Integer telephone_secondary;
+    private Integer telephoneSecondary;
 
     @Getter
     @Setter
-    private Integer telephone_personne_contacte;
+    private Integer telephonePersonneContacte;
 
      //FK
      @OneToOne
-     @JoinColumn(name = "client", referencedColumnName = "id_client")
+     @JoinColumn(name = "client", referencedColumnName = "idClient")
      private Client client;
 
      public Telephone(){
