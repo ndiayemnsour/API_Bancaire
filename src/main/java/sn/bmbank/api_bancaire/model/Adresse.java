@@ -41,6 +41,8 @@ public class Adresse {
 
     //FK
     @OneToOne
+    @Getter
+    @Setter
     @JoinColumn(name = "client", referencedColumnName = "idClient")
     private Client client;
 

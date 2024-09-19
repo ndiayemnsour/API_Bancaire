@@ -1,5 +1,9 @@
 package sn.bmbank.api_bancaire.repository;
 
-public interface AdresseRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import sn.bmbank.api_bancaire.model.Adresse;
+
+public interface AdresseRepository extends JpaRepository<Adresse, String>{
     
 }
