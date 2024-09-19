@@ -5,7 +5,6 @@ import org.springframework.data.domain.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import sn.bmbank.api_bancaire.model.*;
 import sn.bmbank.api_bancaire.service.CompteService;
@@ -30,19 +29,6 @@ public class CompteController {
         return compteService.getCompteById(id_compte);
     }
     
-    //Endpoint pour  ajouter un Compte
-   @PostMapping("add")
-    public  ResponseEntity<Compte> addCompte(@RequestBody Compte compte) {
-        try {
-            Compte newCompte = compteService.addCompte(compte);
-            System.err.println(newCompte);
-            return ResponseEntity.status(HttpStatus.CREATED).body(newCompte);
-        } catch (Exception e) {
-            
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage(), e);
-        }
-    }
-
     //methode pour retourner Compte
     
     @GetMapping("all")
@@ -63,5 +49,22 @@ public class CompteController {
     // public Float getSolde(@PathVariable Integer numero_compte) {
     //     return compteService.getSoldeByNumeroCompte(numero_compte);
     // }
+
+    /**
+     * Endpoint pour créer une nouvelle compte.
+     * 
+     * @param compte La transaction à créer
+     * @return La transaction effectuée et sauvegardée
+     */
+    @PostMapping("add")
+    public ResponseEntity<Compte> createCompte(@RequestBody Compte compte){
+        try {
+            Compte newCompte = compteService.addCompte(compte);
+            return new ResponseEntity<>(newCompte, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+    }
+    
 
 }

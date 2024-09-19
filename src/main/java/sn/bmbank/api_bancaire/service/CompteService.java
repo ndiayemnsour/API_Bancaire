@@ -16,9 +16,17 @@ public class CompteService {
     //Injection des dependances du repository 
     @Autowired
     private CompteRepository compteRepository;
+
+    @Autowired
     private TypeRepository typeRepository;
+
+    @Autowired
     private StatutRepository statutRepository;
+
+    @Autowired
     private ClientRepository clientRepository;
+
+    @Autowired
     private GestionnaireCompteRepository gestionnaireCompteRepository;
 
     //methodes pour recuperer tous les Compte
@@ -32,7 +40,13 @@ public class CompteService {
         return optionalCompte.orElse(null);
     }
 
-    // Méthode pour ajouter un Compte
+    /**
+     *Ajouter un compte.
+     * 
+     * @param compte La transaction à effectuer
+     * @return La transaction effectuée et sauvegardée
+     * @throws Exception si l'un des comptes n'est pas trouvé ou si le solde est insuffisant
+     */
     public Compte addCompte(Compte compte) throws Exception {
         // Récupérer le type de compte
         Type type = typeRepository.findById(compte.getType().getIdType())
@@ -55,8 +69,6 @@ public class CompteService {
         compte.setStatut(statut);
         compte.setClient(client);
         compte.setGestionnaire(gestionnaireCompte);
-
-        System.out.println("ID Type: " + compte.getType().getIdType());
         
         // Sauvegarder le compte
         return compteRepository.save(compte);
@@ -90,5 +102,7 @@ public class CompteService {
     //     }
     // }
 
+
+    
 
 }
