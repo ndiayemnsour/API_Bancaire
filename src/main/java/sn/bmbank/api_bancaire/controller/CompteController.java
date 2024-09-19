@@ -16,13 +16,6 @@ public class CompteController {
      @Autowired
     private CompteService compteService; 
 
-    //private CompteRepository compteRepository;
-    //Endpoint pour recuperer tous les Compte
-    /*@GetMapping("all")
-    public List<Compte> getAllCompte() {
-        return compteService.getAllCompte();
-    }*/
-
     //Endpoint pour recuperer un Compte par son ID
     @GetMapping("{id_compte}")
     public Compte getCompteById(@PathVariable String id_compte){
@@ -38,17 +31,12 @@ public class CompteController {
         return compteService.getAllComptes(page, size);
     }
 
-    //Endpoint pour recuperer un solde d'un compte
-    // @GetMapping("{id_compte}/balance")
-    // public Float getSolde(@PathVariable String id_compte) {
-    //     return compteService.getSoldeByIdCompte(id_compte);
-    // }
 
-    //Endpoint pour recuperer un solde d'un compte
-    // @GetMapping("{numero_compte}/balance")
-    // public Float getSolde(@PathVariable Integer numero_compte) {
-    //     return compteService.getSoldeByNumeroCompte(numero_compte);
-    // }
+    //Endpoint pour recuperer un solde d'un compte par le numero du compte
+    @GetMapping("{numeroCompte}/balance")
+    public Float getSoldeByNumeroCompte(@PathVariable Integer numeroCompte) {
+        return compteService.getSoldeByNumeroCompte(numeroCompte);
+    }
 
     /**
      * Endpoint pour créer une nouvelle compte.

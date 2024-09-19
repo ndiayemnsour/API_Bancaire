@@ -26,7 +26,7 @@ public class TransactionController {
      * @param transaction La transaction à créer
      * @return La transaction effectuée et sauvegardée
      */
-    @PostMapping
+    @PostMapping("add")
     public ResponseEntity<Transaction> createTransaction(@RequestBody Transaction transaction) {
         try {
             Transaction newTransaction = transactionService.executeTransaction(transaction);

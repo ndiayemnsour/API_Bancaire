@@ -82,25 +82,16 @@ public class CompteService {
         return compteRepository.findAll(pageable);
     }
 
-    //methode pour recuperer le solde d'un compte par son ID
-    // public Float getSoldeByIdCompte(String id_compte) {
-    //     Optional<Compte> compte = compteRepository.findById_compte(id_compte);
-    //     if (compte.isPresent()) {
-    //         return compte.get().getSolde();
-    //     } else {
-    //         throw new RuntimeException("Compte non trouvé pour le numéro: " + id_compte);
-    //     }
-    // }
 
     //methode pour recuperer le solde d'un compte par son numero_compte
-    // public Float getSoldeByNumeroCompte(Integer numero_compte) {
-    //     Optional<Compte> compte = compteRepository.findByNumero_compte(numero_compte);
-    //     if (compte.isPresent()) {
-    //         return compte.get().getSolde();
-    //     } else {
-    //         throw new RuntimeException("Compte non trouvé pour le numéro: " + numero_compte);
-    //     }
-    // }
+    public Float getSoldeByNumeroCompte(Integer numeroCompte) {
+        Optional<Compte> compte = compteRepository.findByNumeroCompte(numeroCompte);
+        if (compte.isPresent()) {
+            return compte.get().getSolde();
+        } else {
+            throw new RuntimeException("Compte non trouvé pour le numéro: " + numeroCompte);
+        }
+    }
 
 
     
