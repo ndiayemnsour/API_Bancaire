@@ -32,14 +32,20 @@ public class CarteBancaire {
 
     //FK
     @ManyToOne
+    @Getter
+    @Setter
     @JoinColumn(name = "statut", referencedColumnName = "idStatut")
     private Statut statut;
 
     @ManyToOne
+    @Getter
+    @Setter
     @JoinColumn(name = "type", referencedColumnName = "idType")
     private Type type;
 
     @ManyToOne
+    @Getter
+    @Setter
     @JoinColumn(name = "compte", referencedColumnName = "idCompte")
     private Compte compte;
 
