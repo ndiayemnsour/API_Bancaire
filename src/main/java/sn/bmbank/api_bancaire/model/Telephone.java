@@ -20,18 +20,20 @@ public class Telephone {
 
     @Getter
     @Setter
-    private Integer telephonePrimary;
+    private String telephonePrimary;
 
     @Getter
     @Setter
-    private Integer telephoneSecondary;
+    private String telephoneSecondary;
 
     @Getter
     @Setter
-    private Integer telephonePersonneContacte;
+    private String telephonePersonneContacte;
 
      //FK
      @OneToOne
+     @Getter
+     @Setter
      @JoinColumn(name = "client", referencedColumnName = "idClient")
      private Client client;
 
