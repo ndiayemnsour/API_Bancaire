@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import sn.bmbank.api_bancaire.model.Type;
 import sn.bmbank.api_bancaire.service.TypeService;
 
+
 @RestController
 @RequestMapping("/type/")
 public class TypeController {
@@ -26,6 +27,17 @@ public class TypeController {
             return typeService.getTypeById(id_type);
         }
     
+    //Endpoint pour recuperer le nom des types seulement
+    @GetMapping("name")
+    public List<String> getNameType(){
+        return typeService.getAllTypeNames();
+    }
+
+    public String getMethodName(@RequestParam String param) {
+        return new String();
+    }
+    
+
     //Endpoint pour  ajouter un Type
     @PostMapping("add")
     public Type addType(@RequestBody Type type){

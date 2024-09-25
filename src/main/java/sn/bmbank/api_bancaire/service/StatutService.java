@@ -24,6 +24,11 @@ public class StatutService {
         return optionalStatut.orElse(null);
     }
 
+    //Methode pour recuperer le nom des statut
+    public List<String> getAllStatutName(){
+        return statutRepository.findAllNomStatut();
+    }
+
     //Methode pour ajouter un Statut
     public Statut addStatut(Statut statut){
         return statutRepository.save(statut);

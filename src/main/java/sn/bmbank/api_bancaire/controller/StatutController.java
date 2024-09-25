@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import sn.bmbank.api_bancaire.model.*;
-import java.util.List;
+import java.util.*;
+
 
 @RestController
 @RequestMapping("/statut/")
@@ -32,6 +33,13 @@ public class StatutController {
         return statutService.getStatutById(id_statut);
     }
     
+    //Endpoint pour recuperer le nom des Statut
+    @GetMapping("name")
+    public List<String> getStatutName() {
+        return statutService.getAllStatutName();
+    }
+    
+
     //Endpoint pour  ajouter un Statut
     @PostMapping("add")
         public Statut addStatut(@RequestBody Statut statut) {

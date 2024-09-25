@@ -25,6 +25,11 @@ public class TypeService {
         return optionalType.orElse(null);
     }
 
+    //methode pour recuperer le nom des type
+    public List<String> getAllTypeNames() {
+        return typeRepository.findAllNomTypes();
+    }
+
     //Methode pour ajouter un Statut
     public Type addType(Type type){
         return typeRepository.save(type);
